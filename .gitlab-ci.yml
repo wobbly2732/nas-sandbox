@@ -1,11 +1,11 @@
-# freenas/baseimage
+# 
 
 stages:
   - Build
   - Unit Tests
  
 nas server:
-  image: freenas/baseimage
+  image: ubuntu
   stage: Build
   script:
     - echo "pwd"
