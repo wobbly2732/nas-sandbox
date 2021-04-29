@@ -9,4 +9,12 @@ nas server:
   stage: Build
   script:
     - pwd
-    - sudo apt-get update
+    - apt-get update
+    - mkdir /root/my_dir
+    - echo "/root/my_dir *(rw,async,insecure,no_root_squash)" >> /etc/exports
+    - cat /etc/exports
+  artifacts:
+    paths:
+    - root/my_dir
+    - /etc/exports
+
