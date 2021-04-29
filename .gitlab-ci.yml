@@ -1,61 +1,12 @@
+# 
+
 stages:
-    - Prep
-    - Build
-    - Unit Test
-
-image: alpine
-
-prep env:
-    stage: Prep
-    script:
-        - mkdir build
-        - cd build
-        - mkdir car
-        - cd car
-        - touch car.txt
-    artifacts:
-        paths:
-        - build
-
-build a car:
-    stage: Build
-    script:
-        - cd build/car
-        - echo "chassis" >> car.txt
-        - echo "engine" >> car.txt
-        - echo "wheels" >> car.txt
-    artifacts:
-        paths:
-        - build/car
-.build a plane:
-    stage: Build
-    script:
-        - cd build
-        - mkdir plane
-        - cd plane    
-        - touch plane.txt
-        - echo "fuselage" >> plane.txt
-        - echo "wings" >> plane.txt
-        - echo "engines" >> plane.txt
-        - echo "wheels" >> plane.txt
-    artifacts:
-        paths:
-            - build/plane
-
-.test a car:
-    stage: Unit Test
-    script:
-        - test -f "build/car/car.txt"
-        - cd build/car
-        - grep "chassis" car.txt
-        - grep "engine" car.txt
-        - grep "wheels" car.txt
-.test a plane:
-    stage: Unit Test
-    script:
-        - test -f "build/plane/plane.txt"
-        - cd build/plane
-        - grep "fuselage" plane.txt
-        - grep "wings" plane.txt
-        - grep "engine" plane.txt
-        - grep "wheels" plane.txt
+  - Build
+  - Unit Tests
+ 
+nas server:
+  image: ubuntu
+  stage: Build
+  script:
+    - pwd
+    - sudo apt-get update
