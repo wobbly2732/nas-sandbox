@@ -1,4 +1,4 @@
-# 
+# NAS
 
 stages:
   - Build
@@ -19,8 +19,8 @@ nas server:
     - cat /etc/fstab | grep "/home/users"
   artifacts:
     paths:
-    - export
-    - home
+    - /export
+    - /home
 
 test nas server:
   image: ubuntu
