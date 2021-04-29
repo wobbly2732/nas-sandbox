@@ -10,13 +10,14 @@ nas server:
   script:
     - pwd
     - apt-get update
-    - mkdir /root/my_dir
-    - echo "/root/my_dir *(rw,async,insecure,no_root_squash)" >> /etc/exports
-    - cat /etc/exports
-    - service nfs start
-    - service nfs status
+    - apt-get install nfs-kernel-server -y
+    - mkdir -p /export/users
+    - mount --bind /home/users /export/users
+    - echo "/home/users    /export/users    none    bind  0  0" >> /etc/fstab
+    - cat /etc/fstab | grep "/home/users"
+
   artifacts:
     paths:
-    - root/my_dir
+    - export/users
     - /etc
 
