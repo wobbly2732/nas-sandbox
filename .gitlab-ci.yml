@@ -12,12 +12,22 @@ nas server:
     - apt-get update
     - apt-get install nfs-kernel-server -y
     - mkdir -p /export/users
+    - mkdir -p /home/users
     - mount --bind /home/users /export/users
     - echo "/home/users    /export/users    none    bind  0  0" >> /etc/fstab
     - cat /etc/fstab | grep "/home/users"
-
   artifacts:
     paths:
     - export/users
+    - home/users
     - /etc
 
+test nas server:
+  image: ubuntu
+  stage: Unit Tests
+  script:
+    - cd /home/users
+    - mkdir user1
+    - touch ~/user1/testfile.txt
+    - echo "test file created" >> ~/user1/testfile.txt
+    - grep "test file created" ~/user1/testfile.txt
