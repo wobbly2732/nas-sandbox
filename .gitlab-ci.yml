@@ -7,10 +7,11 @@ stages:
 nas server:
   image: ubuntu
   stage: Build
-  script:
-    - pwd
+  before_script:
     - apt-get update
+    - apt-get upgrade -y
     - apt-get install nfs-kernel-server -y
+  script:
     - mkdir -p /export/users
     - mkdir -p /home/users
     - mount --bind /home/users /export/users
