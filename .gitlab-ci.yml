@@ -28,6 +28,6 @@ test nas server:
   script:
     - cd home/users
     - mkdir user1
-    - touch ~/user1/testfile.txt
-    - echo "test file created" >> ~/user1/testfile.txt
-    - grep "test file created" ~/user1/testfile.txt
+    - touch ./user1/testfile.txt
+    - echo "test file created" >> ./user1/testfile.txt
+    - grep "test file created" ./user1/testfile.txt
