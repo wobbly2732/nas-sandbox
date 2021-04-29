@@ -1,0 +1,11 @@
+# freenas/baseimage
+
+stages:
+ - Build
+ - Unit Tests
+ 
+nas server:
+  image: freenas/baseimage
+  stage: Build
+  script:
+   - echo "pwd"
