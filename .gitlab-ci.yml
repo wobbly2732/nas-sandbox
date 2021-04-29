@@ -13,8 +13,10 @@ nas server:
     - mkdir /root/my_dir
     - echo "/root/my_dir *(rw,async,insecure,no_root_squash)" >> /etc/exports
     - cat /etc/exports
+    - service nfs start
+    - service nfs status
   artifacts:
     paths:
     - root/my_dir
-    - /etc/exports
+    - /etc
 
