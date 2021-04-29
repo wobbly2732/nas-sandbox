@@ -19,9 +19,8 @@ nas server:
     - cat /etc/fstab | grep "/home/users"
   artifacts:
     paths:
-    - export/users
-    - home/users
-    - /etc
+    - export
+    - home
 
 test nas server:
   image: ubuntu
